@@ -1,38 +1,312 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* MOBILE STYLING */
+
+@media (max-width: 1024px) {
+  .navbar-links {
+    display: flex;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 720px) {
+  body {
+    overflow-x: hidden;
+  }
+  .navbar-links {
+    position: fixed;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    display: none;
+  }
+  .navbar-links li {
+    opacity: 0;
+    display: none;
+  }
+  .navbar-links ul {
+    display: none;
+  }
+
+  .burger {
+    display: block !important;
+    padding-right: 19px;
+    cursor: pointer;
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.5;
+  }
+
+  .modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: ;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+  }
+
+  .modal {
+    z-index: 100;
+    background-image: url(../src/assets/images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 3px;
+    max-width: 180px;
+    height: 100vh;
+    padding: 2rem;
+    float: right;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .modal-burger-button {
+    color: #fd4e00;
+    background-color: #000;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    width: 25px;
+    color: #fd4e00;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .burger-navbar {
+    display: flex;
+  }
+  .burger-navbar-links {
+    justify-content: center;
+    list-style-type: none;
+  }
+}
+
+/* DESKTOP STYLING */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+}
+
+body {
+  background-image: url(../src/assets/images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: white;
+  height: 80vh;
+}
+
+.containerPage {
+  display: block;
+}
+
+.landing-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 8vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+
+.nav-logo {
+  margin: 15px;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-links li {
+  text-decoration: none;
+  list-style-type: none;
+  margin-left: 30px;
+  padding-right: 25px;
+}
+
+li::first-letter {
+  color: #fd4e00;
+}
+
+.burger {
+  display: none;
+}
+
+.burger div {
+  width: 25px;
+  height: 4px;
+  background-color: #fd4e00;
+  margin: 5px;
+}
+
+.aboutpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  letter-spacing: 1.5px;
+  font-size: large;
+}
+.workoutpage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  letter-spacing: 1.5px;
+  font-size: large;
+}
+
+/**
+**
+**
+**
+**
+*/
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 26px;
+  margin-top: -80px;
+  height: 40px;
+  color: #fd4e00;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+  .card {
+    margin: 20px;
+    width: 130px;
+    height: 130px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+      -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+}
+
+.percentageContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   color: white;
+  height: 80vh;
+  font-size: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.secondContainer form {
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.formcss {
+  text-align: center;
+}
+
+.inputcss {
+  background-image: url(../src/assets/images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg);
+  height: 33px;
+  width: 200px;
+  color: #fd4e00;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
