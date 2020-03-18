@@ -1,0 +1,14 @@
+node_modules/
+
+/client/build
+
+.DS_Store
+/client-workout/.env.local
+/client-workout/.env.development.local
+/client-workout/.env.test.local
+/client-workout/.env.production.local
+
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

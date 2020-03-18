@@ -1,0 +1,43 @@
+.workoutcard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.workoutcard {
+  padding: 1rem;
+  border: #ccc 1px dotted;
+  margin: 0.7rem 0;
+  background-color: #fd4e00;
+  width: 380px;
+}
+
+.bg-light,
+.badge-light {
+  border: #ccc solid 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  width: 30px;
+  align-items: left;
+  margin-top: 5px;
+}
+
+@media all and (max-width: 500px) {
+  .workoutcard {
+    width: 350px;
+  }
+  .workoutcard h1 {
+    font-size: 27px;
+  }
+  .workoutcard h2,
+  h3 {
+    font-size: 16px;
+  }
+}
