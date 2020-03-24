@@ -1,8 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import WorkoutContext from '../../context/workout/workoutContext';
 
 import pluslogo from '../../assets/images/plus.svg';
+import edi from '../../assets/images/edit.svg';
 
 const WorkoutForm = () => {
+  const workoutContext = useContext(WorkoutContext);
+
+  const { addWorkout, current, clearCurrent, updateWorkout } = workoutContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setWorkout(current);
+    } else {
+      setWorkout({
+        workoutday: '',
+        exercise: '',
+        weight: '',
+        sets: '',
+        reps: ''
+      });
+    }
+  }, [workoutContext, current]);
+
   const [workout, setWorkout] = useState({
     workoutday: '',
     exercise: '',
@@ -16,21 +36,34 @@ const WorkoutForm = () => {
   const onChange = e =>
     setWorkout({ ...workout, [e.target.name]: e.target.value });
 
+  const onSubmit = e => {
+    e.preventDefault();
+    if (current === null) {
+      addWorkout(workout);
+    } else {
+      updateWorkout(workout);
+    }
+    clearAll();
+  };
+
+  const clearAll = () => {
+    clearCurrent();
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className='weight-form-input'>
         <div className='form-card'>
-          {/* <input
+          <h3>{current ? 'Edit ' : 'Add '} </h3>
+          <input
             className='input-text'
-            type='text'
             placeholder='Workout Day'
             name='workoutday'
             value={workoutday}
             onChange={onChange}
-          /> */}
+          />
           <input
             className='input-text'
-            type='text'
             placeholder='Exercise'
             name='exercise'
             value={exercise}
@@ -60,7 +93,17 @@ const WorkoutForm = () => {
             value={reps}
             onChange={onChange}
           />
-          {plus}
+          <button
+            type='submit'
+            style={{
+              backgroundColor: '#fd4e00',
+              border: 'none',
+              height: '25px',
+              width: '25px'
+            }}
+          >
+            {plus}
+          </button>
         </div>
       </div>
     </form>
@@ -73,6 +116,9 @@ const plus = (
     alt='del'
     style={{ height: '20px', width: '20px', marginTop: '20px' }}
   />
+);
+const edit = (
+  <img src={edi} alt='del' style={{ height: '20px', width: '20px' }} />
 );
 
 export default WorkoutForm;

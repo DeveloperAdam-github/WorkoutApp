@@ -1,7 +1,7 @@
 import React from 'react';
 import WorkoutForm from '../components/workouts/WorkoutForm';
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <div className='container'>
       <div className='login-form-container'>
@@ -9,9 +9,10 @@ const Login = () => {
         <p>Log your workout below...</p>
         <br />
         <WorkoutForm />
+        <br />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginForm;

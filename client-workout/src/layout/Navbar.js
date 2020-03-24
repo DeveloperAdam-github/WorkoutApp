@@ -33,15 +33,15 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to='/about'
+              to='/register'
               style={{ color: 'white', textDecoration: 'none' }}
             >
-              ABOUT
+              REGISTER
             </Link>
           </li>
           <li>
             <Link
-              to='/login'
+              to='/loginuser'
               style={{ color: 'white', textDecoration: 'none' }}
             >
               LOGIN

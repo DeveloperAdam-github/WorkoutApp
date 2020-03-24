@@ -49,16 +49,16 @@ const BurgerModal = ({ isShowing, hide, Logo }) =>
                   <li>
                     <Link
                       onClick={hide}
-                      to='/about'
+                      to='/register'
                       style={{ color: 'white', textDecoration: 'none' }}
                     >
-                      ABOUT
+                      REGISTER
                     </Link>
                   </li>
                   <li>
                     <Link
                       onClick={hide}
-                      to='/login'
+                      to='/loginuser'
                       style={{ color: 'white', textDecoration: 'none' }}
                     >
                       LOGIN

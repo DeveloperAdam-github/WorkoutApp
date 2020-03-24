@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import WorkoutContext from '../../context/workout/workoutContext';
 
 import PropTypes from 'prop-types';
 import './WorkoutItem.css';
@@ -6,7 +7,16 @@ import del from '../../assets/images/bin.svg';
 import edi from '../../assets/images/edit.svg';
 
 const WorkoutItem = ({ workout }) => {
+  const workoutContext = useContext(WorkoutContext);
+  const { deleteWorkout, setCurrent, clearCurrent } = workoutContext;
+
   const { id, workoutday, exercise, weight, sets, reps } = workout;
+
+  const onDelete = () => {
+    deleteWorkout(id);
+    clearCurrent();
+  };
+
   return (
     <div className='workoutcard-container'>
       <div className='workoutcard bg-light'>
@@ -23,8 +33,12 @@ const WorkoutItem = ({ workout }) => {
           Sets: <span style={{ color: 'white' }}>{sets} X</span> Reps:
           <span style={{ color: 'white' }}> {reps},</span>
         </h3>
-        <div className='delete'>{Delete}</div>
-        <div className='edit'>{Edit}</div>
+        <div className='delete' onClick={onDelete}>
+          {Delete}
+        </div>
+        <div className='edit' onClick={() => setCurrent(workout)}>
+          {Edit}
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import WorkoutContext from './workoutContext';
 import workoutReducer from './workoutReducer';
 import {
@@ -39,29 +39,62 @@ const WorkoutState = props => {
         sets: 3,
         reps: 3
       }
-    ]
+    ],
+    current: null,
+    filtered: null
   };
 
   const [state, dispatch] = useReducer(workoutReducer, initialState);
 
   // Add workout
+  const addWorkout = workout => {
+    workout.id = uuidv4();
+    dispatch({ type: ADD_WORKOUT, payload: workout });
+  };
 
   // Delete workout
+  const deleteWorkout = id => {
+    dispatch({ type: DELETE_WORKOUT, payload: id });
+  };
 
   // Set current workout
+  const setCurrent = workout => {
+    dispatch({ type: SET_CURRENT, payload: workout });
+  };
 
   // Clear current workout
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update workout
+  const updateWorkout = workout => {
+    dispatch({ type: UPDATE_WORKOUT, payload: workout });
+  };
 
   // Filter workouts
+  const filterWorkouts = text => {
+    dispatch({ type: FILTER_WORKOUT, payload: text });
+  };
 
   // Clear filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <WorkoutContext.Provider
       value={{
-        workouts: state.workouts
+        workouts: state.workouts,
+        current: state.current,
+        filtered: state.filtered,
+        addWorkout,
+        deleteWorkout,
+        setCurrent,
+        clearCurrent,
+        updateWorkout,
+        filterWorkouts,
+        clearFilter
       }}
     >
       {props.children}

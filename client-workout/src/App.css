@@ -11,6 +11,25 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+/* Anitmation (Add after) */
+.item-enter {
+  opacity: 0.01;
+}
+
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
 /* MOBILE STYLING */
 
 @media (max-width: 1024px) {
@@ -47,6 +66,9 @@ input[type='number'] {
     display: block !important;
     padding-right: 19px;
     cursor: pointer;
+  }
+  .landing-page {
+    margin-bottom: 40px;
   }
   .modal-overlay {
     position: fixed;
@@ -107,6 +129,10 @@ input[type='number'] {
   .burger-navbar-links {
     justify-content: center;
     list-style-type: none;
+  }
+  .workouts {
+    min-height: 530px;
+    overflow-y: scroll;
   }
 }
 
@@ -230,8 +256,8 @@ li::first-letter {
 }
 
 .form-card {
-  height: 180px;
-  width: 240px;
+  height: 230px;
+  width: 290px;
   background-color: #fd4e00;
   padding: 10px;
   display: flex;
@@ -242,7 +268,7 @@ li::first-letter {
 
 .input-number {
   height: 25px;
-  width: 220px;
+  width: 250px;
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
@@ -252,7 +278,7 @@ li::first-letter {
 }
 .input-text {
   height: 25px;
-  width: 220px;
+  width: 250px;
   text-align: center;
   border-radius: 5px;
   font-size: 16px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Workouts from './components/workouts/Workouts';
+import WorkoutFilter from './components/workouts/WorkoutFilter';
 
 import fitness from './assets/images/FitnessImage1.svg';
 
@@ -7,10 +8,13 @@ const LandingPage = () => {
   return (
     <div className='container'>
       <div className='landing-page'>
-        <h1 style={{ fontSize: '45px' }}>
+        <h1 style={{ fontSize: '35px', paddingTop: '140px' }}>
           <br />
           GET IT <br /> DONE.
         </h1>
+        <br />
+        <WorkoutFilter />
+        <p>Add a workout</p>
         <br />
         <div className='workouts'>
           <Workouts />
