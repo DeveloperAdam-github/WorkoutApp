@@ -1,10 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import WorkoutContext from '../../context/workout/workoutContext';
+import AuthContext from '../../context/auth/authContext';
 
 import pluslogo from '../../assets/images/plus.svg';
 import edi from '../../assets/images/edit.svg';
 
 const WorkoutForm = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.loadUser();
+    // eslint-disable-next-line
+  }, []);
+
   const workoutContext = useContext(WorkoutContext);
 
   const { addWorkout, current, clearCurrent, updateWorkout } = workoutContext;

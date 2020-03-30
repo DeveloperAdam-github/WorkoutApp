@@ -42,6 +42,9 @@ input[type='number'] {
   body {
     overflow-x: hidden;
   }
+  .hide-sm {
+    display: none;
+  }
   .navbar-links {
     position: fixed;
     right: 0px;

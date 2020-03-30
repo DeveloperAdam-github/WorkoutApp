@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Workouts from './components/workouts/Workouts';
 import WorkoutFilter from './components/workouts/WorkoutFilter';
+import AuthContext from './context/auth/authContext';
 
 import fitness from './assets/images/FitnessImage1.svg';
 
 const LandingPage = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.loadUser();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className='container'>
       <div className='landing-page'>
@@ -14,7 +22,7 @@ const LandingPage = () => {
         </h1>
         <br />
         <WorkoutFilter />
-        <p>Add a workout</p>
+        <a href='/workoutform'>Add a workout</a>
         <br />
         <div className='workouts'>
           <Workouts />

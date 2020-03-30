@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import gym from '../assets/images/gym.svg';
+import logoutlogo from '../assets/images/logout.svg';
 
 import BurgerModal from './Burger/BurgerModal.js';
 import useModal from './Burger/useModal.js';
 
+import AuthContext from '../context/auth/authContext';
+
 const Navbar = () => {
+  const authContext = useContext(AuthContext);
+
+  const { isAuthenticated, logout, user } = authContext;
+
+  const authLinks = (
+    <Fragment>
+      <li>Hello {user && user.name}</li>
+      <li>
+        <a href='#!'>
+          {logout} <span className='hide-sm'>Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <li>
+        <Link to='/register' style={{ color: 'white', textDecoration: 'none' }}>
+          REGISTER
+        </Link>
+      </li>
+      <li>
+        <Link
+          to='/loginuser'
+          style={{ color: 'white', textDecoration: 'none' }}
+        >
+          LOGIN
+        </Link>
+      </li>
+    </Fragment>
+  );
+
   const { isShowing, toggle } = useModal();
   return (
     <div>
@@ -65,6 +101,10 @@ const Logo = (
     alt=''
     style={{ height: '70px', width: '70px', float: 'left' }}
   />
+);
+
+const logout = (
+  <img src={logoutlogo} alt='' style={{ height: '60px', width: '60px' }} />
 );
 
 export default Navbar;

@@ -6,16 +6,22 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import LandingPage from './LandingPage';
 import Workout from './pages/workout';
+import WorkoutForm from './components/workouts/WorkoutForm';
 import Percentages from './pages/percentages';
 import About from './pages/about';
 import LoginForm from './pages/login';
 import WorkoutState from './context/workout/WorkoutState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import setAuthToken from './utils/setAuthToken';
 
 import RegisterUser from './components/auth/RegisterUser';
 import LoginUser from './components/auth/LoginUser';
 import Alerts from './components/layout/Alerts';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
   return (
@@ -28,6 +34,7 @@ function App() {
               <Alerts />
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/workout' component={Workout} />
+              <Route exact path='/workoutform' component={WorkoutForm} />
               <Route exact path='/percentages' component={Percentages} />
               <Route exact path='/about' component={About} />
               <Route exact path='/loginform' component={LoginForm} />
