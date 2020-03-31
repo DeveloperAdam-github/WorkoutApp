@@ -1,60 +1,78 @@
 import React, { useReducer } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 import WorkoutContext from './workoutContext';
 import workoutReducer from './workoutReducer';
 import {
+  GET_WORKOUTS,
   ADD_WORKOUT,
   DELETE_WORKOUT,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_WORKOUT,
   FILTER_WORKOUT,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  WORKOUT_ERROR,
+  CLEAR_WORKOUTS
 } from '../types';
 
 const WorkoutState = props => {
   const initialState = {
-    workouts: [
-      {
-        id: 1,
-        workoutday: 'Chest day',
-        exercise: 'Bench Press',
-        weight: 100,
-        sets: 5,
-        reps: 10
-      },
-      {
-        id: 2,
-        workoutday: 'Leg day',
-        exercise: 'Leg Press',
-        weight: 180,
-        sets: 2,
-        reps: 20
-      },
-      {
-        id: 3,
-        workoutday: 'Back day',
-        exercise: 'Deadlift',
-        weight: 220,
-        sets: 3,
-        reps: 3
-      }
-    ],
+    workouts: [],
     current: null,
-    filtered: null
+    filtered: null,
+    error: null
   };
 
   const [state, dispatch] = useReducer(workoutReducer, initialState);
 
+  // GET WORKOUT
+  const getWorkouts = async () => {
+    try {
+      const res = await axios.get('/api/workouts');
+
+      dispatch({
+        type: GET_WORKOUTS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: WORKOUT_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
   // Add workout
-  const addWorkout = workout => {
-    workout.id = uuidv4();
-    dispatch({ type: ADD_WORKOUT, payload: workout });
+  const addWorkout = async workout => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/api/workouts', workout, config);
+
+      dispatch({
+        type: ADD_WORKOUT,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: WORKOUT_ERROR,
+        payload: err.response.msg
+      });
+    }
   };
 
   // Delete workout
   const deleteWorkout = id => {
     dispatch({ type: DELETE_WORKOUT, payload: id });
+  };
+
+  // Clear workouts
+  const clearWorkouts = () => {
+    dispatch({ type: CLEAR_WORKOUTS });
   };
 
   // Set current workout
@@ -88,13 +106,16 @@ const WorkoutState = props => {
         workouts: state.workouts,
         current: state.current,
         filtered: state.filtered,
+        error: state.error,
         addWorkout,
         deleteWorkout,
         setCurrent,
         clearCurrent,
         updateWorkout,
         filterWorkouts,
-        clearFilter
+        clearFilter,
+        getWorkouts,
+        clearWorkouts
       }}
     >
       {props.children}

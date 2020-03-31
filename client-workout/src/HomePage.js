@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import Workouts from './components/workouts/Workouts';
-import WorkoutFilter from './components/workouts/WorkoutFilter';
 import AuthContext from './context/auth/authContext';
 
 import fitness from './assets/images/FitnessImage1.svg';
 
-const LandingPage = () => {
+const HomePage = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -16,25 +14,9 @@ const LandingPage = () => {
   return (
     <div className='container'>
       <div className='landing-page'>
-        <h1 style={{ fontSize: '35px', paddingTop: '140px' }}>
-          <br />
+        <h1 style={{ fontSize: '40px', paddingTop: '100px' }}>
           GET IT <br /> DONE.
         </h1>
-        <br />
-        <WorkoutFilter />
-        <br />
-        <a
-          href='/workoutform'
-          style={{
-            color: 'white'
-          }}
-        >
-          Add a workout
-        </a>
-        <br />
-        <div className='workouts'>
-          <Workouts />
-        </div>
       </div>
     </div>
   );
@@ -48,4 +30,4 @@ const gymPic = (
   />
 );
 
-export default LandingPage;
+export default HomePage;

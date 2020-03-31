@@ -1,19 +1,30 @@
 import {
+  GET_WORKOUTS,
   ADD_WORKOUT,
   DELETE_WORKOUT,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_WORKOUT,
   FILTER_WORKOUT,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  WORKOUT_ERROR,
+  CLEAR_WORKOUTS
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case ADD_WORKOUT:
+    case GET_WORKOUTS:
       return {
         ...state,
-        workouts: [...state.workouts, action.payload]
+        workouts: action.payload,
+        loading: false
+      };
+    case ADD_WORKOUT:
+      console.log('Payload: ', action);
+      return {
+        ...state,
+        workouts: [...state.workouts, action.payload],
+        loading: false
       };
     case UPDATE_WORKOUT:
       return {
@@ -28,7 +39,16 @@ export default (state, action) => {
         ...state,
         workouts: state.workouts.filter(
           workout => workout.id !== action.payload
-        )
+        ),
+        loading: false
+      };
+    case CLEAR_WORKOUTS:
+      return {
+        ...state,
+        workouts: null,
+        filtered: null,
+        error: null,
+        current: null
       };
     case SET_CURRENT:
       return {
@@ -54,6 +74,11 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null
+      };
+    case WORKOUT_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

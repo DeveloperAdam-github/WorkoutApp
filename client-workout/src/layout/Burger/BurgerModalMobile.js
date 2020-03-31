@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
-const BurgerModal = ({ isShowing, hide, onLogout }) =>
+const BurgerModalMobile = ({ isShowing, hide, Logo }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -31,37 +31,19 @@ const BurgerModal = ({ isShowing, hide, onLogout }) =>
                   <li>
                     <Link
                       onClick={hide}
-                      to='/workout'
+                      to='/register'
                       style={{ color: 'white', textDecoration: 'none' }}
                     >
-                      TEMPLATES
+                      REGISTER
                     </Link>
                   </li>
                   <li>
                     <Link
                       onClick={hide}
-                      to='/percentages'
-                      style={{ color: 'white', textDecoration: 'none' }}
-                    >
-                      PERCENTAGES
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      onClick={hide}
-                      to='/workoutform'
-                      style={{ color: 'white', textDecoration: 'none' }}
-                    >
-                      WORKOUT
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       to='/loginuser'
-                      onClick={onLogout}
                       style={{ color: 'white', textDecoration: 'none' }}
                     >
-                      LOGOUT
+                      LOGIN
                     </Link>
                   </li>
                 </ul>
@@ -73,4 +55,4 @@ const BurgerModal = ({ isShowing, hide, onLogout }) =>
       )
     : null;
 
-export default BurgerModal;
+export default BurgerModalMobile;

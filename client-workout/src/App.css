@@ -297,6 +297,11 @@ li::first-letter {
 ***
 **
 */
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .cards-list {
   z-index: 0;

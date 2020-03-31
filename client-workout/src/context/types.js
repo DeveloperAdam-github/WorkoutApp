@@ -1,3 +1,4 @@
+export const GET_WORKOUTS = 'GET_WORKOUTS';
 export const ADD_WORKOUT = 'ADD_WORKOUT';
 export const DELETE_WORKOUT = 'DELETE_WORKOUT';
 export const SET_CURRENT = 'SET_CURRENT';
@@ -5,6 +6,8 @@ export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_WORKOUT = 'UPDATE_WORKOUT';
 export const FILTER_WORKOUT = 'FILTER_WORKOUT';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const CLEAR_WORKOUTS = 'CLEAR_WORKOUTS';
+export const WORKOUT_ERROR = 'WORKOUT_ERROR';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';

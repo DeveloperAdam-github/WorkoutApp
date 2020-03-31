@@ -8,44 +8,25 @@ import BurgerModal from './Burger/BurgerModal.js';
 import useModal from './Burger/useModal.js';
 
 import AuthContext from '../context/auth/authContext';
+import WorkoutContext from '../context/workout/workoutContext';
+import BurgerModalMobile from './Burger/BurgerModalMobile';
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
+  const workoutContext = useContext(WorkoutContext);
 
-  const { isAuthenticated, logout, user } = authContext;
+  const { isAuthenticated, logout } = authContext;
+  const { clearWorkouts } = workoutContext;
+
+  const { isShowing, toggle, onLogout } = useModal();
+
+  // const onLogout = () => {
+  //   logout();
+  //   clearWorkouts();
+  // };
 
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
-      <li>
-        <a href='#!'>
-          {logout} <span className='hide-sm'>Logout</span>
-        </a>
-      </li>
-    </Fragment>
-  );
-
-  const guestLinks = (
-    <Fragment>
-      <li>
-        <Link to='/register' style={{ color: 'white', textDecoration: 'none' }}>
-          REGISTER
-        </Link>
-      </li>
-      <li>
-        <Link
-          to='/loginuser'
-          style={{ color: 'white', textDecoration: 'none' }}
-        >
-          LOGIN
-        </Link>
-      </li>
-    </Fragment>
-  );
-
-  const { isShowing, toggle } = useModal();
-  return (
-    <div>
       <div className='nav-logo'>
         <Link to='/'>{Logo}</Link>
       </div>
@@ -56,7 +37,7 @@ const Navbar = () => {
               to='/workout'
               style={{ color: 'white', textDecoration: 'none' }}
             >
-              WORKOUTS
+              TEMPLATES
             </Link>
           </li>
           <li>
@@ -67,6 +48,33 @@ const Navbar = () => {
               PERCENTAGES
             </Link>
           </li>
+          <li>
+            <Link
+              to='/loginuser'
+              onClick={onLogout}
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
+              LOGOUT
+            </Link>
+          </li>
+        </ul>
+        <div className='burger' id='burger' onClick={toggle}>
+          <div className='line1'></div>
+          <div className='line2'></div>
+          <div className='line3'></div>
+        </div>
+        <BurgerModal isShowing={isShowing} hide={toggle} />
+      </div>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <div className='nav-logo'>
+        <Link to='/'>{Logo}</Link>
+      </div>
+      <div className='navbar'>
+        <ul className='navbar-links'>
           <li>
             <Link
               to='/register'
@@ -89,10 +97,12 @@ const Navbar = () => {
           <div className='line2'></div>
           <div className='line3'></div>
         </div>
-        <BurgerModal isShowing={isShowing} hide={toggle} />
+        <BurgerModalMobile isShowing={isShowing} hide={toggle} />
       </div>
-    </div>
+    </Fragment>
   );
+
+  return <div>{isAuthenticated ? authLinks : guestLinks}</div>;
 };
 
 const Logo = (

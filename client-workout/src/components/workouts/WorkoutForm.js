@@ -5,6 +5,8 @@ import AuthContext from '../../context/auth/authContext';
 import pluslogo from '../../assets/images/plus.svg';
 import edi from '../../assets/images/edit.svg';
 
+import './WorkoutItem.css';
+
 const WorkoutForm = () => {
   const authContext = useContext(AuthContext);
 
@@ -59,62 +61,64 @@ const WorkoutForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className='weight-form-input'>
-        <div className='form-card'>
-          <h3>{current ? 'Edit ' : 'Add '} </h3>
-          <input
-            className='input-text'
-            placeholder='Workout Day'
-            name='workoutday'
-            value={workoutday}
-            onChange={onChange}
-          />
-          <input
-            className='input-text'
-            placeholder='Exercise'
-            name='exercise'
-            value={exercise}
-            onChange={onChange}
-          />
-          <input
-            className='input-number'
-            type='number'
-            placeholder='Weight = 0'
-            name='weight'
-            value={weight}
-            onChange={onChange}
-          />
-          <input
-            className='input-number'
-            type='number'
-            placeholder='Sets = 0'
-            name='sets'
-            value={sets}
-            onChange={onChange}
-          />
-          <input
-            className='input-number'
-            type='number'
-            placeholder='Reps = 0'
-            name='reps'
-            value={reps}
-            onChange={onChange}
-          />
-          <button
-            type='submit'
-            style={{
-              backgroundColor: '#fd4e00',
-              border: 'none',
-              height: '25px',
-              width: '25px'
-            }}
-          >
-            {plus}
-          </button>
+    <div className='form-container'>
+      <form onSubmit={onSubmit}>
+        <div className='weight-form-input'>
+          <div className='form-card'>
+            <h3>{current ? 'Edit ' : 'Add '} </h3>
+            <input
+              className='input-text'
+              placeholder='Workout Day'
+              name='workoutday'
+              value={workoutday}
+              onChange={onChange}
+            />
+            <input
+              className='input-text'
+              placeholder='Exercise'
+              name='exercise'
+              value={exercise}
+              onChange={onChange}
+            />
+            <input
+              className='input-number'
+              type='number'
+              placeholder='Weight = 0'
+              name='weight'
+              value={weight}
+              onChange={onChange}
+            />
+            <input
+              className='input-number'
+              type='number'
+              placeholder='Sets = 0'
+              name='sets'
+              value={sets}
+              onChange={onChange}
+            />
+            <input
+              className='input-number'
+              type='number'
+              placeholder='Reps = 0'
+              name='reps'
+              value={reps}
+              onChange={onChange}
+            />
+            <button
+              type='submit'
+              style={{
+                backgroundColor: '#fd4e00',
+                border: 'none',
+                height: '25px',
+                width: '25px'
+              }}
+            >
+              {plus}
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
