@@ -15,6 +15,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/workouts', require('./routes/workouts'));
 
+app.use(express.static(path.join(__dirname, './client-workout', "build")));
+
 // Serve stat assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder

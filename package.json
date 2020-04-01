@@ -4,12 +4,12 @@
   "description": "Workout App",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "concurrently --kill-others-on-fail \"node server\"",
     "server": "nodemon server.js",
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
     "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
-    "build": "cd client-workout && npm run-script build"
+    "build": "\"cd client-workout && npm install --only=dev && npm install && npm run-script build"
   },
   "keywords": [],
   "author": "",
