@@ -9,7 +9,7 @@
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
     "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
-    "build": "cd client-workout && npm install --only=dev && npm install && npm run-script build"
+    "build": "cd client-workout && rm -r node_modules && npm install --only=dev && npm install && npm run-script build"
   },
   "keywords": [],
   "author": "",
@@ -27,9 +27,7 @@
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "react-transition-group": "^4.3.0"
-  },
-  "devDependencies": {
+    "react-transition-group": "^4.3.0",
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
