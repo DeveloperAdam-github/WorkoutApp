@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const path = require('path');
 
 const app = express();
 
@@ -9,12 +10,22 @@ connectDB();
 //INIT MIDDLEWARE
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.json({ msg: 'Welcome to your workouts' }));
-
 // DEFINE OUR ROUTES
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/workouts', require('./routes/workouts'));
+
+// Serve stat assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client-workout/build'));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, 'client-workout', 'build', 'index.html')
+    )
+  );
+}
 
 const PORT = process.env.PORT || 5000;
 

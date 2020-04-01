@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fda96898.chunk.css",
+    "main.js": "/static/js/main.8a4870a3.chunk.js",
+    "main.js.map": "/static/js/main.8a4870a3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.af68c3be.js",
+    "runtime-main.js.map": "/static/js/runtime-main.af68c3be.js.map",
+    "static/js/2.eafdb018.chunk.js": "/static/js/2.eafdb018.chunk.js",
+    "static/js/2.eafdb018.chunk.js.map": "/static/js/2.eafdb018.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ec15a8fc0b3228633dd078eaced45077.js": "/precache-manifest.ec15a8fc0b3228633dd078eaced45077.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.fda96898.chunk.css.map": "/static/css/main.fda96898.chunk.css.map",
+    "static/js/2.eafdb018.chunk.js.LICENSE.txt": "/static/js/2.eafdb018.chunk.js.LICENSE.txt",
+    "static/media/FitnessImage1.svg": "/static/media/FitnessImage1.28dbb063.svg",
+    "static/media/Jimwendler.jpg": "/static/media/Jimwendler.eb542ee8.jpg",
+    "static/media/App.css": "/static/media/adrien-olichon-RCAhiGJsUUE-unsplash.ec45de49.jpg",
+    "static/media/bin.svg": "/static/media/bin.650cdc57.svg",
+    "static/media/edit.svg": "/static/media/edit.2927f8de.svg",
+    "static/media/gym.svg": "/static/media/gym.7b145fe4.svg",
+    "static/media/logout.svg": "/static/media/logout.efa2f1bd.svg",
+    "static/media/plus.svg": "/static/media/plus.d0f5911d.svg",
+    "static/media/spinner.gif": "/static/media/spinner.378d0df4.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af68c3be.js",
+    "static/js/2.eafdb018.chunk.js",
+    "static/css/main.fda96898.chunk.css",
+    "static/js/main.8a4870a3.chunk.js"
+  ]
+}
