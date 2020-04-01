@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
-const BurgerModal = ({ isShowing, hide, onLogout }) =>
+const BurgerModal = ({ isShowing, hide, onLogout, logout }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -57,8 +57,8 @@ const BurgerModal = ({ isShowing, hide, onLogout }) =>
                   </li>
                   <li>
                     <Link
+                      onClick={logout}
                       to='/loginuser'
-                      onClick={onLogout}
                       style={{ color: 'white', textDecoration: 'none' }}
                     >
                       LOGOUT

@@ -10,10 +10,10 @@ const WorkoutItem = ({ workout }) => {
   const workoutContext = useContext(WorkoutContext);
   const { deleteWorkout, setCurrent, clearCurrent } = workoutContext;
 
-  const { id, workoutday, exercise, weight, sets, reps } = workout;
+  const { _id, workoutday, exercise, weight, sets, reps } = workout;
 
   const onDelete = () => {
-    deleteWorkout(id);
+    deleteWorkout(_id);
     clearCurrent();
   };
 

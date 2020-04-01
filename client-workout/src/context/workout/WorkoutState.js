@@ -66,8 +66,47 @@ const WorkoutState = props => {
   };
 
   // Delete workout
-  const deleteWorkout = id => {
-    dispatch({ type: DELETE_WORKOUT, payload: id });
+  const deleteWorkout = async id => {
+    try {
+      await axios.delete(`/api/workouts/${id}`);
+
+      dispatch({
+        type: DELETE_WORKOUT,
+        payload: id
+      });
+    } catch (err) {
+      dispatch({
+        type: WORKOUT_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
+  // Update workout
+  const updateWorkout = async workout => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.put(
+        `/api/workouts/${workout._id}`,
+        workout,
+        config
+      );
+
+      dispatch({
+        type: UPDATE_WORKOUT,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: WORKOUT_ERROR,
+        payload: err.response.msg
+      });
+    }
   };
 
   // Clear workouts
@@ -83,11 +122,6 @@ const WorkoutState = props => {
   // Clear current workout
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
-  };
-
-  // Update workout
-  const updateWorkout = workout => {
-    dispatch({ type: UPDATE_WORKOUT, payload: workout });
   };
 
   // Filter workouts

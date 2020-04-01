@@ -4,6 +4,7 @@ import WorkoutFilter from './components/workouts/WorkoutFilter';
 import AuthContext from './context/auth/authContext';
 
 import fitness from './assets/images/FitnessImage1.svg';
+import WorkoutForm from './components/workouts/WorkoutForm';
 
 const LandingPage = () => {
   const authContext = useContext(AuthContext);

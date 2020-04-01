@@ -30,7 +30,7 @@ export default (state, action) => {
       return {
         ...state,
         workouts: state.workouts.map(workout =>
-          workout.id === action.payload.id ? action.payload : workout
+          workout._id === action.payload._id ? action.payload : workout
         ),
         loading: false
       };
@@ -38,7 +38,7 @@ export default (state, action) => {
       return {
         ...state,
         workouts: state.workouts.filter(
-          workout => workout.id !== action.payload
+          workout => workout._id !== action.payload
         ),
         loading: false
       };

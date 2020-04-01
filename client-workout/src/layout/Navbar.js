@@ -18,12 +18,12 @@ const Navbar = () => {
   const { isAuthenticated, logout } = authContext;
   const { clearWorkouts } = workoutContext;
 
-  const { isShowing, toggle, onLogout } = useModal();
+  const { isShowing, toggle } = useModal();
 
-  // const onLogout = () => {
-  //   logout();
-  //   clearWorkouts();
-  // };
+  const onLogout = () => {
+    logout();
+    clearWorkouts();
+  };
 
   const authLinks = (
     <Fragment>
@@ -63,7 +63,7 @@ const Navbar = () => {
           <div className='line2'></div>
           <div className='line3'></div>
         </div>
-        <BurgerModal isShowing={isShowing} hide={toggle} />
+        <BurgerModal isShowing={isShowing} hide={toggle} logout={onLogout} />
       </div>
     </Fragment>
   );
@@ -113,8 +113,8 @@ const Logo = (
   />
 );
 
-const logout = (
-  <img src={logoutlogo} alt='' style={{ height: '60px', width: '60px' }} />
-);
+// const logout = (
+//   <img src={logoutlogo} alt='' style={{ height: '60px', width: '60px' }} />
+// );
 
 export default Navbar;
