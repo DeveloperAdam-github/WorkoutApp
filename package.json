@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
-    "dev": "concurrently \"npm run server\" \"npm run client-workout\""
+    "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
+    "build": "cd /client-workout && npm build"
   },
   "keywords": [],
   "author": "",
