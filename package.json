@@ -9,8 +9,7 @@
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
     "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
-    "clean": "rm -rf node_modules",
-    "build": "cd client-workout && npm run clean && npm install --only=dev && npm install && npm run-script build"
+    "build": "cd client-workout && npm install --only=dev && npm install && npm run-script build"
   },
   "keywords": [],
   "author": "",
