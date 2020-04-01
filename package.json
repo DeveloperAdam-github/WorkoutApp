@@ -9,11 +9,7 @@
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
     "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
-    "build": "cd client-workout && npm run-script build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "cd client-workout && npm run-script build"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +22,11 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.4",
     "uuid": "^7.0.2",
-    "react-scripts": "3.4.0"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
