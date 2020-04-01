@@ -9,7 +9,7 @@
     "client-workout": "npm start --prefix client-workout",
     "client-workoutinstall": "npm install --prexfix client-workout",
     "dev": "concurrently \"npm run server\" \"npm run client-workout\"",
-    "build": "cd client-workout && run build"
+    "build": "cd client-workout && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +21,8 @@
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.4",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.2",
+    "react-scripts": "3.4.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
